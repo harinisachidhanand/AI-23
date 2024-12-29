@@ -158,4 +158,4 @@ def try_archs(train_table, test_table, target_column_name, architectures, thresh
     up_write_table(pima_train, 'pima_train.csv')  # Move over to GitHub to get URL
     up_write_table(pima_test, 'pima_test.csv')  # Move over to GitHub to get URL
 
-    return arch_acc_dict
+return arch_acc_dict
