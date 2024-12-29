@@ -142,5 +142,14 @@ def try_archs(train_table, test_table, target_column_name, architectures, thresh
 
     print(f'Architecture: {arch}')
     display(up_metrics_table(all_mets))
+    
+  # Insert this code before calling up_train_test_split
+wrangled_pima_scaled = up_scale_table(wrangled_pima)
+
+# Now, the original line should work:
+pima_train, pima_test = up_train_test_split(wrangled_pima_scaled, 'Outcome', .4)
+
+up_write_table(pima_train, 'pima_train.csv')  #then move over to github to get url
+up_write_table(pima_test, 'pima_test.csv')  #then move over to github to get url
 
   return arch_acc_dict
