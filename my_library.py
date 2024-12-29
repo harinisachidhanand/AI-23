@@ -178,7 +178,4 @@ def try_archs(train_table, test_table, target_column_name, architectures, thresh
 
   return arch_acc_dict
 
-import json
 
-with open("nn_pos_probs.json", "w") as a_file:
-    json.dump(pos_probs, a_file)
