@@ -149,5 +149,5 @@ def try_archs(train_table, test_table, target_column_name, architectures, thresh
         print(f'Architecture: {arch}')
         display(up_metrics_table(all_mets))
     
-    return arch_acc_dict
+return arch_acc_dict
 
