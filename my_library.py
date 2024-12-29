@@ -142,20 +142,11 @@ def try_archs(train_table, test_table, target_column_name, architectures, thresh
             pred_act_list = up_zip_lists(predictions, up_get_column(test_table, target_column_name))
             mets = metrics(pred_act_list)
             mets['Threshold'] = t
-            all_mets = all_mets + [mets]
+            all_mets.append(mets)
 
         arch_acc_dict[tuple(arch)] = max([mets['Accuracy'] for mets in all_mets])  # Extra credit
 
         print(f'Architecture: {arch}')
         display(up_metrics_table(all_mets))
 
-    # Insert this code before calling up_train_test_split
-    wrangled_pima_scaled = up_scale_table(wrangled_pima)
-
-    # Original line
-    pima_train, pima_test = up_train_test_split(wrangled_pima_scaled, 'Outcome', 0.4)
-
-    up_write_table(pima_train, 'pima_train.csv')  # Move over to GitHub to get URL
-    up_write_table(pima_test, 'pima_test.csv')  # Move over to GitHub to get URL
-
-return arch_acc_dict
+    return arch_acc_dict
