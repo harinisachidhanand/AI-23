@@ -182,4 +182,3 @@ import json
 
 with open("nn_pos_probs.json", "w") as a_file:
     json.dump(pos_probs, a_file)
-
