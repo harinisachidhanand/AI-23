@@ -152,4 +152,4 @@ pima_train, pima_test = up_train_test_split(wrangled_pima_scaled, 'Outcome', .4)
 up_write_table(pima_train, 'pima_train.csv')  #then move over to github to get url
 up_write_table(pima_test, 'pima_test.csv')  #then move over to github to get url
 
-  return arch_acc_dict
+return arch_acc_dict
