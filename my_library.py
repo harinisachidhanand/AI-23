@@ -152,4 +152,29 @@ def try_archs(train_table, test_table, target_column_name, architectures, thresh
     # Make sure this return statement is inside the function
     return arch_acc_dict
 
+def try_archs(train_table, test_table, target_column_name, architectures, thresholds):
+  arch_acc_dict = {}  #ignore if not attempting extra credit
+
+  #now loop through architectures
+  for structure in architectures: # Renamed structure to arch
+    pos_ = up_neural_net(train_table, test_table, structure, target_column_name)
+
+    all_mets = []
+    #loop through thresholds
+    for t in thresholds:
+      all_predictions = [1 if pos>=t else 0 for neg,pos in pos_] # Use pos_ here instead of probs
+      pred_act_list = up_zip_lists(all_predictions, up_get_column(test_table, target_column_name)) # Use test_table and target_column_name
+      mets = metrics(pred_act_list)
+      mets['Threshold'] = t
+      all_mets = all_mets + [mets]
+
+    #loop through thresholds
+
+
+    #arch_acc_dict[tuple(arch)] = max(...)  #extra credit - uncomment if want to attempt
+
+    print(f'Architecture: {structure}') # Use structure instead of arch
+    display(up_metrics_table(all_mets))
+
+  return arch_acc_dict
 
